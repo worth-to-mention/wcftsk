@@ -1,0 +1,115 @@
+﻿<Window x:Class="AdventureWorksClient.Views.SalesOrderDetailsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SalesOrderDetailsView" Height="300" Width="300">
+    <Grid>
+        <ListView ItemsSource="{Binding OrderDetails}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Content="Unit price"
+                    />
+                        <Label Grid.Row="0"
+                           Grid.Column="1"
+                           Content="{Binding UnitPrice}"
+                    />
+                        <Label Grid.Row="1"
+                           Grid.Column="0"
+                           Content="Quantity"
+                    />
+                        <Label Grid.Row="1"
+                           Grid.Column="1"
+                           Content="{Binding OrderQuantity}"
+                    />
+                        <Label Grid.Row="2"
+                           Grid.Column="0"
+                           Content="Unit price discount"
+                    />
+                        <Label Grid.Row="2"
+                           Grid.Column="1"
+                           Content="{Binding UnitPriceDiscount}"
+                    />
+                        <Label Grid.Row="3"
+                           Grid.Column="0"
+                           Content="Line total"
+                    />
+                        <Label Grid.Row="3"
+                           Grid.Column="1"
+                           Content="{Binding LineTotal}"
+                    />
+                        <Border Padding="10"
+                            Grid.Row="4"
+                            Grid.ColumnSpan="2"
+                            DataContext="{Binding Product}"
+                            HorizontalAlignment="Stretch"
+                        >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Image Grid.Column="0"
+                                   Grid.Row="0"
+                                />
+
+                                <Label  Grid.Row="0"
+                                    Grid.Column="1"
+                                    Content="Product name"
+                                />
+                                <Label  Grid.Row="0"
+                                    Grid.Column="2"
+                                    Content="{Binding Name}"
+                                />
+                                <Label  Grid.Row="1"
+                                    Grid.Column="1"
+                                    Content="Product number"
+                                />
+                                <Label  Grid.Row="1"
+                                    Grid.Column="2"
+                                    Content="{Binding ProductNumber}"
+                                />
+                                <Label  Grid.Row="2"
+                                    Grid.Column="1"
+                                    Content="List price"
+                                />
+                                <Label  Grid.Row="2"
+                                    Grid.Column="2"
+                                    Content="{Binding ListPrice}"
+                                />
+                                <Label  Grid.Row="3"
+                                    Grid.Column="1"
+                                    Content="Standard cost"
+                                />
+                                <Label  Grid.Row="3"
+                                    Grid.Column="2"
+                                    Content="{Binding StandardCost}"
+                                />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

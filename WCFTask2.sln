@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorksService", "AdventureWorksService\AdventureWorksService.csproj", "{210793FC-C2D7-49CB-A411-36DE6DDDF596}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FF9532BA-792D-42EF-917B-F0B1A0789518}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsventureWorksHost", "AsventureWorksHost\AsventureWorksHost.csproj", "{5B327DBF-6BA8-40BF-979F-77A19942E517}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorksClient", "AdventureWorksClient\AdventureWorksClient.csproj", "{156B7511-9EE2-406D-BCBD-F5C958C3226E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{210793FC-C2D7-49CB-A411-36DE6DDDF596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{210793FC-C2D7-49CB-A411-36DE6DDDF596}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{210793FC-C2D7-49CB-A411-36DE6DDDF596}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{210793FC-C2D7-49CB-A411-36DE6DDDF596}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B327DBF-6BA8-40BF-979F-77A19942E517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B327DBF-6BA8-40BF-979F-77A19942E517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B327DBF-6BA8-40BF-979F-77A19942E517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B327DBF-6BA8-40BF-979F-77A19942E517}.Release|Any CPU.Build.0 = Release|Any CPU
+		{156B7511-9EE2-406D-BCBD-F5C958C3226E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{156B7511-9EE2-406D-BCBD-F5C958C3226E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{156B7511-9EE2-406D-BCBD-F5C958C3226E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{156B7511-9EE2-406D-BCBD-F5C958C3226E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

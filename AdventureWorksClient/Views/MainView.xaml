@@ -1,0 +1,17 @@
+﻿<Window x:Class="AdventureWorksClient.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainView" Height="300" Width="300">
+    <Grid>
+        <UniformGrid>
+            <Button>255</Button>
+            <Button>255</Button>
+            <Button>255</Button>
+            <Button>255</Button>
+            <Button>255</Button>
+            <Button>255</Button>
+            <Button>255</Button>
+            <Button>255</Button>
+        </UniformGrid>
+    </Grid>
+</Window>
