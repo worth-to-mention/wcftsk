@@ -11,9 +11,6 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources\MainDictionary.xaml" />
-                <ResourceDictionary Source="Resources\WindowStyle.xaml" />
-                <ResourceDictionary Source="Resources\ResizeGrip.xaml" />
-                <ResourceDictionary Source="Resources\ListViewStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

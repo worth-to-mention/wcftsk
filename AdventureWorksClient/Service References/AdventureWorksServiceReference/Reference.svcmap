@@ -24,6 +24,8 @@
     <MetadataSource Address="http://localhost:8001" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="6dbaae93-ba7c-44f8-afb3-e700594a0cd9" SourceId="1" SourceUrl="http://localhost:8001/?xsd=xsd4" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="d6dbfcb9-20f1-41d3-8eda-7c31ad2a932a" SourceId="1" SourceUrl="http://localhost:8001/?xsd=xsd3" />
     <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="acfdfbb8-150b-4f90-8f9f-13b5e74ba4bb" SourceId="1" SourceUrl="http://localhost:8001/?xsd=xsd2" />
     <MetadataFile FileName="item1.wsdl" MetadataType="Wsdl" ID="0cbc529c-70b3-4dfd-b58c-9fb0e10eb3e1" SourceId="1" SourceUrl="http://localhost:8001/?wsdl=wsdl0" />
     <MetadataFile FileName="AdventureWorks1.wsdl" MetadataType="Wsdl" ID="49886a1e-3dfd-444b-9bf1-5df449fab034" SourceId="1" SourceUrl="http://localhost:8001/?wsdl" />

@@ -10,7 +10,6 @@ using AdventureWorksService.Contracts;
 namespace AdventureWorksService
 {
     [ServiceContract(Name=@"AdventuresWorks", Namespace=@"http://adventure.works")]
-    [ServiceKnownType(typeof(List<SalesOrder>))]
     public interface IAdventuresWorks
     {
         [OperationContract]
@@ -33,6 +32,9 @@ namespace AdventureWorksService
 
         [OperationContract]
         Int32 GetAddressesCount();
+
+        [OperationContract]
+        ProductImageMessage GetProductImage(ProductImageRequest imageRequest);
 
     }
 }

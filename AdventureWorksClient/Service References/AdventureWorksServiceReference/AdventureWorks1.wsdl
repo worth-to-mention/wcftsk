@@ -67,6 +67,16 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetProductImage">
+      <soap:operation soapAction="http://adventure.works/AdventuresWorks/GetProductImage" style="document" />
+      <wsdl:input name="ProductImageRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ProductImageMessage">
+        <soap:header message="i0:ProductImageMessage_Headers" part="FileName" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="AdventureWorks">
     <wsdl:port name="BasicHttpBinding_AdventuresWorks" binding="tns:BasicHttpBinding_AdventuresWorks">

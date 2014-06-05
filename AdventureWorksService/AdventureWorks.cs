@@ -33,6 +33,7 @@ namespace AdventureWorksService
             }
             return count;
         }
+        
         public List<Contracts.SalesOrderDetails> GetSalesOrderDetails(Int32 salesOrderID)
         {
             var details = new List<Contracts.SalesOrderDetails>();
@@ -41,8 +42,11 @@ namespace AdventureWorksService
                 details = context.SalesOrderDetails.Where(x => x.SalesOrderID == salesOrderID).ToList()
                     .Select(x => {
                         Product product = context.Products.FirstOrDefault(z => z.ProductID == x.ProductID);
+                        context.Entry(product).Collection(p => p.ProductProductPhotoes).Load();
+
                         var detail = Mapper.Map<SalesOrderDetail, Contracts.SalesOrderDetails>(x);
                         detail.Product = Mapper.Map<Product, Contracts.Product>(product);
+
                         return detail;
                     }).ToList();
             }
@@ -67,9 +71,6 @@ namespace AdventureWorksService
             }
             return people;
         }
-
-
-
         public Int32 GetPeopleCount()
         {
             var count = 0;
@@ -93,7 +94,6 @@ namespace AdventureWorksService
 
             return adresses;
         }
-
         public Int32 GetAddressesCount()
         {
             Int32 count = 0;
@@ -107,6 +107,11 @@ namespace AdventureWorksService
         }
 
         public void UpdateSalesOrder(Contracts.SalesOrder salesOrder)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Contracts.ProductImageMessage GetProductImage(Contracts.ProductImageRequest imageRequest)
         {
             throw new NotImplementedException();
         }

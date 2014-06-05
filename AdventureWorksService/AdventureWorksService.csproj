@@ -59,6 +59,8 @@
     <Compile Include="Contracts\AddressType.cs" />
     <Compile Include="Contracts\Person.cs" />
     <Compile Include="Contracts\Product.cs" />
+    <Compile Include="Contracts\ProductImageMessage.cs" />
+    <Compile Include="Contracts\ProductImageRequest.cs" />
     <Compile Include="Contracts\SalesOrder.cs" />
     <Compile Include="Contracts\SalesOrderDetails.cs" />
     <Compile Include="Contracts\SalesOrderStatus.cs" />

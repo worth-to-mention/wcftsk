@@ -404,6 +404,9 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
         private int ProductIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<int> ProductImageIdsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -467,6 +470,19 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
                 if ((this.ProductIDField.Equals(value) != true)) {
                     this.ProductIDField = value;
                     this.RaisePropertyChanged("ProductID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<int> ProductImageIds {
+            get {
+                return this.ProductImageIdsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductImageIdsField, value) != true)) {
+                    this.ProductImageIdsField = value;
+                    this.RaisePropertyChanged("ProductImageIds");
                 }
             }
         }
@@ -799,6 +815,51 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://adventure.works/AdventuresWorks/GetAddressesCount", ReplyAction="http://adventure.works/AdventuresWorks/GetAddressesCountResponse")]
         System.Threading.Tasks.Task<int> GetAddressesCountAsync();
+        
+        // CODEGEN: Generating message contract since the wrapper name (ProductImageRequest) of message ProductImageRequest does not match the default value (GetProductImage)
+        [System.ServiceModel.OperationContractAttribute(Action="http://adventure.works/AdventuresWorks/GetProductImage", ReplyAction="http://adventure.works/AdventuresWorks/GetProductImageResponse")]
+        AdventureWorksClient.AdventureWorksServiceReference.ProductImageMessage GetProductImage(AdventureWorksClient.AdventureWorksServiceReference.ProductImageRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://adventure.works/AdventuresWorks/GetProductImage", ReplyAction="http://adventure.works/AdventuresWorks/GetProductImageResponse")]
+        System.Threading.Tasks.Task<AdventureWorksClient.AdventureWorksServiceReference.ProductImageMessage> GetProductImageAsync(AdventureWorksClient.AdventureWorksServiceReference.ProductImageRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ProductImageRequest", WrapperNamespace="http://adventure.works", IsWrapped=true)]
+    public partial class ProductImageRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://adventure.works", Order=0)]
+        public int ImageID;
+        
+        public ProductImageRequest() {
+        }
+        
+        public ProductImageRequest(int ImageID) {
+            this.ImageID = ImageID;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ProductImageMessage", WrapperNamespace="http://adventure.works", IsWrapped=true)]
+    public partial class ProductImageMessage {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://adventure.works")]
+        public string FileName;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://adventure.works", Order=0)]
+        public System.IO.Stream ImageData;
+        
+        public ProductImageMessage() {
+        }
+        
+        public ProductImageMessage(string FileName, System.IO.Stream ImageData) {
+            this.FileName = FileName;
+            this.ImageData = ImageData;
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -882,6 +943,30 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
         
         public System.Threading.Tasks.Task<int> GetAddressesCountAsync() {
             return base.Channel.GetAddressesCountAsync();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AdventureWorksClient.AdventureWorksServiceReference.ProductImageMessage AdventureWorksClient.AdventureWorksServiceReference.AdventuresWorks.GetProductImage(AdventureWorksClient.AdventureWorksServiceReference.ProductImageRequest request) {
+            return base.Channel.GetProductImage(request);
+        }
+        
+        public string GetProductImage(int ImageID, out System.IO.Stream ImageData) {
+            AdventureWorksClient.AdventureWorksServiceReference.ProductImageRequest inValue = new AdventureWorksClient.AdventureWorksServiceReference.ProductImageRequest();
+            inValue.ImageID = ImageID;
+            AdventureWorksClient.AdventureWorksServiceReference.ProductImageMessage retVal = ((AdventureWorksClient.AdventureWorksServiceReference.AdventuresWorks)(this)).GetProductImage(inValue);
+            ImageData = retVal.ImageData;
+            return retVal.FileName;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<AdventureWorksClient.AdventureWorksServiceReference.ProductImageMessage> AdventureWorksClient.AdventureWorksServiceReference.AdventuresWorks.GetProductImageAsync(AdventureWorksClient.AdventureWorksServiceReference.ProductImageRequest request) {
+            return base.Channel.GetProductImageAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<AdventureWorksClient.AdventureWorksServiceReference.ProductImageMessage> GetProductImageAsync(int ImageID) {
+            AdventureWorksClient.AdventureWorksServiceReference.ProductImageRequest inValue = new AdventureWorksClient.AdventureWorksServiceReference.ProductImageRequest();
+            inValue.ImageID = ImageID;
+            return ((AdventureWorksClient.AdventureWorksServiceReference.AdventuresWorks)(this)).GetProductImageAsync(inValue);
         }
     }
 }

@@ -89,19 +89,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\Command.cs" />
-    <Page Include="Resources\ListViewStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Resources\MainDictionary.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\ResizeGrip.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\WindowStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,13 +137,22 @@
     <None Include="Service References\AdventureWorksServiceReference\AdventureWorksClient.AdventureWorksServiceReference.Person.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\AdventureWorksServiceReference\AdventureWorksClient.AdventureWorksServiceReference.ProductImageMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\AdventureWorksServiceReference\AdventureWorksClient.AdventureWorksServiceReference.SalesOrder.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AdventureWorksServiceReference\AdventureWorksClient.AdventureWorksServiceReference.SalesOrderDetails.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\AdventureWorksServiceReference\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\AdventureWorksServiceReference\item1.wsdl" />
+    <None Include="Service References\AdventureWorksServiceReference\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\AdventureWorksServiceReference\item3.xsd">
       <SubType>Designer</SubType>
     </None>

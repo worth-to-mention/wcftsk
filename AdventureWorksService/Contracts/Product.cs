@@ -22,6 +22,8 @@ namespace AdventureWorksService.Contracts
         public Decimal StandardCost { get; set; }
         [DataMember]
         public Decimal ListPrice { get; set; }
+        [DataMember]
+        public List<Int32> ProductImageIds { get; set; }
 
     }
 }
