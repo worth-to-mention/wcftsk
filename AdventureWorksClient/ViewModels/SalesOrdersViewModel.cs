@@ -8,6 +8,7 @@ using System.Windows.Input;
 using AdventureWorksClient.Views;
 
 using AdventureWorksClient.AdventureWorksServiceReference;
+using System.Threading;
 
 namespace AdventureWorksClient.ViewModels
 {
@@ -34,11 +35,14 @@ namespace AdventureWorksClient.ViewModels
         public SalesOrdersViewModel(SalesOrdersView view)
         {
             this.view = view;
-            client = new AdventureWorksServiceReference.AdventuresWorksClient();
-            OrdersCount = client.GetSalesOrdersCount();
-            SalesOrders = new ObservableCollection<SalesOrder>(
-                client.GetSalesOrders(currentPage * pageSize, pageSize)
-            );
+            new Thread(() =>
+            {
+                client = new AdventureWorksServiceReference.AdventuresWorksClient();
+                OrdersCount = client.GetSalesOrdersCount();
+                SalesOrders = new ObservableCollection<SalesOrder>(
+                    client.GetSalesOrders(currentPage * pageSize, pageSize)
+                );
+            }).Start();
         }
 
         #region View data source
@@ -71,6 +75,7 @@ namespace AdventureWorksClient.ViewModels
                 {
                     currentPage = value;
                     OnPropertyChanged("CurrentPage");
+                    OnPropertyChanged("PagingInfo");
                 }
             }
         }
@@ -84,6 +89,7 @@ namespace AdventureWorksClient.ViewModels
                 {
                     pageSize = value;
                     OnPropertyChanged("PageSize");
+                    OnPropertyChanged("PagingInfo");
                 }
             }
         }
@@ -102,6 +108,7 @@ namespace AdventureWorksClient.ViewModels
                 {
                     ordersCount = value;
                     OnPropertyChanged("OrdersCount");
+                    OnPropertyChanged("PagingInfo");
                 }
             }
         }

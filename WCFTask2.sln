@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsventureWorksHost", "Asven
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorksClient", "AdventureWorksClient\AdventureWorksClient.csproj", "{156B7511-9EE2-406D-BCBD-F5C958C3226E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "awsvclib", "awsvclib\awsvclib.csproj", "{1BFCA550-1DD2-4152-8BE4-274E08C444C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{156B7511-9EE2-406D-BCBD-F5C958C3226E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{156B7511-9EE2-406D-BCBD-F5C958C3226E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{156B7511-9EE2-406D-BCBD-F5C958C3226E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BFCA550-1DD2-4152-8BE4-274E08C444C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BFCA550-1DD2-4152-8BE4-274E08C444C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BFCA550-1DD2-4152-8BE4-274E08C444C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BFCA550-1DD2-4152-8BE4-274E08C444C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
