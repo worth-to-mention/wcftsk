@@ -17,7 +17,7 @@ namespace AsventureWorksHost
         static void Main(string[] args)
         {
             MappingConfig.Init();
-            var baseAddress = new Uri(@"http://localhost:8001");
+            var baseAddress = new Uri(@"http://localhost:8002");
             var host = new ServiceHost(typeof(AdventureWorks), baseAddress);
 
             try

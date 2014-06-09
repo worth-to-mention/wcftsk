@@ -5,6 +5,9 @@
         ResizeMode="CanResizeWithGrip"
         Name="SalesOrdersWindow"
         >
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -67,7 +70,7 @@
                 <StackPanel Orientation="Horizontal"  DockPanel.Dock="Left">
                     <Label Content="{Binding PagingInfo}" />
                 </StackPanel>
-                <StackPanel Orientation="Horizontal"  DockPanel.Dock="Right" x:Name="LoaderBlock">
+                <StackPanel Orientation="Horizontal"  DockPanel.Dock="Right" x:Name="LoaderBlock" Visibility="{Binding PageLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <Image Source="{StaticResource LoaderGif}" />
                     <Label Content="Loading..." />
                     <Button FontFamily="Marlett" Content="r" Command="{Binding CancelCurrentTask}"/>

@@ -16,6 +16,18 @@ namespace AdventureWorksClient.Mapping
         protected override void Configure()
         {
             Mapper.CreateMap<AWSvc.SalesOrder, Models.SalesOrder>();
+            Mapper.CreateMap<AWSvc.SalesOrderDetails, Models.SalesOrderDetails>()
+                .ForMember(
+                    dest => dest.ProductImages,
+                    opt => opt.MapFrom(src => 
+                        src.ProductImageIds.Select(x => 
+                            new Models.ProductImage
+                            { 
+                                ImageID = x 
+                            }
+                        )
+                    )
+                );
 
         }
 

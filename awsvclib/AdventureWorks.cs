@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 using awsvclib.EntityModel;
 using AutoMapper;
+using System.IO;
 
 namespace awsvclib
 {
     public class AdventureWorks : IAdventuresWorks
     {
 
+        
         public AdventureWorks()
         {
             Mapping.MappingConfig.Init();
@@ -49,9 +51,9 @@ namespace awsvclib
                     .Select(x => {
                         Product product = context.Products.FirstOrDefault(z => z.ProductID == x.ProductID);
                         context.Entry(product).Collection(p => p.ProductProductPhotoes).Load();
-
+                        
                         var detail = Mapper.Map<SalesOrderDetail, Contracts.SalesOrderDetails>(x);
-                        detail.Product = Mapper.Map<Product, Contracts.Product>(product);
+                        Mapper.Map<Product, Contracts.SalesOrderDetails>(product, detail);
 
                         return detail;
                     }).ToList();
@@ -119,7 +121,30 @@ namespace awsvclib
 
         public Contracts.ProductImageMessage GetProductImage(Contracts.ProductImageRequest imageRequest)
         {
-            throw new NotImplementedException();
+            var msg = new Contracts.ProductImageMessage();
+
+            using (var context = new AdventureWorksContext())
+            {
+                var img = context.ProductPhotoes.Where(x => x.ProductPhotoID == imageRequest.ImageID).FirstOrDefault();
+                if (img != null)
+                {
+                    var stream = new MemoryStream();
+                    var fileName = String.Empty;
+                    if (imageRequest.LargeImage)
+                    {
+                        stream.Write(img.LargePhoto, 0, img.LargePhoto.Length);
+                        fileName = img.LargePhotoFileName;
+                    }
+                    else
+                    {
+                        stream.Write(img.ThumbNailPhoto, 0, img.ThumbNailPhoto.Length);
+                        fileName = img.ThumbnailPhotoFileName;
+                    }
+                    msg.ImageData = stream;
+                    msg.FileName = fileName;
+                }
+            }
+            return msg;
         }
 
         #endregion

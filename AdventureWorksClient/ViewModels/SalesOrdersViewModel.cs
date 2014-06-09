@@ -35,15 +35,21 @@ namespace AdventureWorksClient.ViewModels
         private SalesOrdersView view;
         private AdventureWorksServiceReference.AdventuresWorksClient client;
         
-        public SalesOrdersViewModel(SalesOrdersView view)
+        public  SalesOrdersViewModel(SalesOrdersView view)
         {
             this.view = view;
             client = new AdventureWorksServiceReference.AdventuresWorksClient();
-            Task.Factory.StartNew(() =>
-            {
-                OrdersCount = client.GetSalesOrdersCount();
-            });
+            GetOrdersCount();
+            //Task.Factory.StartNew(() =>
+            //{
+            //    OrdersCount = client.GetSalesOrdersCount();
+            //});
             LoadPage(CurrentPage);
+        }
+
+        private async void GetOrdersCount()
+        {
+            OrdersCount = await client.GetSalesOrdersCountAsync();
         }
 
         #region View data source
@@ -138,6 +144,19 @@ namespace AdventureWorksClient.ViewModels
                 }
             }
         }
+
+        public Boolean PageLoading
+        {
+            get { return pageLoading; }
+            set
+            {
+                if (pageLoading != value)
+                {
+                    pageLoading = value;
+                    OnPropertyChanged("PageLoading");
+                }
+            }
+        }
         #endregion
 
         #region Commands
@@ -151,7 +170,7 @@ namespace AdventureWorksClient.ViewModels
                     nextPage = new Command(x =>
                     {
                         LoadPage(++CurrentPage);
-                    }, x => !pageLoading && (CurrentPage + 1) * PageSize < OrdersCount);
+                    }, x => !PageLoading && (CurrentPage + 1) * PageSize < OrdersCount);
                 }
                 return nextPage;
             }
@@ -167,7 +186,7 @@ namespace AdventureWorksClient.ViewModels
                     {
                         LoadPage(--CurrentPage);
                     }, 
-                        x => !pageLoading && (CurrentPage - 1) >= 0
+                        x => !PageLoading && (CurrentPage - 1) >= 0
                     );
                 }
                 return prevPage;
@@ -181,12 +200,21 @@ namespace AdventureWorksClient.ViewModels
             pageNumber = pageNumber < 0
                 ? 0
                 : pageNumber;
-            pageLoading = true;
+            PageLoading = true;
+            //var task = client.GetSalesOrdersAsync(pageNumber * PageSize, PageSize);
+            //var awaiter = task.GetAwaiter();
+            //awaiter.OnCompleted(() =>
+            //{   
+            //    var result = awaiter.GetResult();
+            //    SalesOrders = new ObservableCollection<SalesOrder>(result); 
+            //    OnPropertyChanged("PagingInfo");
+            //    PageLoading = false;
+            //});
             SalesOrders = new ObservableCollection<SalesOrder>(
                 await client.GetSalesOrdersAsync(pageNumber * PageSize, PageSize)
             );
             OnPropertyChanged("PagingInfo");
-            pageLoading = false;
+            PageLoading = false;
         }
     }
 }

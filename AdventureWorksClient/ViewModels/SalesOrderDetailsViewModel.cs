@@ -4,8 +4,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using AdventureWorksClient.AdventureWorksServiceReference;
 using AdventureWorksClient.Views;
+using AutoMapper;
 
 namespace AdventureWorksClient.ViewModels
 {
@@ -13,7 +16,7 @@ namespace AdventureWorksClient.ViewModels
     {
         private SalesOrderDetailsView view;
 
-        private ObservableCollection<SalesOrderDetails> orderDetails;
+        private ObservableCollection<Models.SalesOrderDetails> orderDetails;
 
         private AdventuresWorksClient client;
 
@@ -22,14 +25,18 @@ namespace AdventureWorksClient.ViewModels
             this.view = view;
 
             client = new AdventuresWorksClient();
-            orderDetails = new ObservableCollection<SalesOrderDetails>(
-                client.GetSalesOrderDetails(OrderID)
+            OrderDetails = new ObservableCollection<Models.SalesOrderDetails>(
+                client.GetSalesOrderDetails(OrderID).ToList().Select(x =>
+                {
+                    return Mapper.Map<SalesOrderDetails, Models.SalesOrderDetails>(x);
+                })
             );
+            LoadImages();
         }
 
         #region Bindings
 
-        public ObservableCollection<SalesOrderDetails> OrderDetails
+        public ObservableCollection<Models.SalesOrderDetails> OrderDetails
         {
             get { return orderDetails; }
             set
@@ -43,5 +50,24 @@ namespace AdventureWorksClient.ViewModels
         }
 
         #endregion
+
+        private void LoadImages()
+        {
+            foreach(var detail in OrderDetails)
+            {
+                detail.ProductImages.ForEach(async x =>
+                {
+                    ProductImageMessage msg = await client.GetProductImageAsync(x.ImageID, LargeImage: false);
+                    var bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.StreamSource = msg.ImageData;
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmap.EndInit();
+                    
+                    x.ImageSource = bitmap;
+                    x.FileName = msg.FileName;
+                });
+            }
+        }
     }
 }

@@ -14,16 +14,6 @@
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="ItemTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <Image
-                        Source="{Binding Path=UriSource}"
-                        Stretch="Uniform"
-                    />
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
     </Style>
     <BitmapImage x:Key="LoaderGif" UriSource="ajax-loader.gif" />
 </ResourceDictionary>

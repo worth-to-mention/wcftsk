@@ -15,7 +15,7 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SalesOrder", Namespace="http://schemas.datacontract.org/2004/07/AdventureWorksService.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SalesOrder", Namespace="http://schemas.datacontract.org/2004/07/awsvclib.Contracts")]
     [System.SerializableAttribute()]
     public partial class SalesOrder : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -251,7 +251,7 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SalesOrderStatus", Namespace="http://schemas.datacontract.org/2004/07/AdventureWorksService.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SalesOrderStatus", Namespace="http://schemas.datacontract.org/2004/07/awsvclib.Contracts")]
     public enum SalesOrderStatus : byte {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
@@ -275,7 +275,7 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SalesOrderDetails", Namespace="http://schemas.datacontract.org/2004/07/AdventureWorksService.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SalesOrderDetails", Namespace="http://schemas.datacontract.org/2004/07/awsvclib.Contracts")]
     [System.SerializableAttribute()]
     public partial class SalesOrderDetails : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -290,6 +290,27 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private AdventureWorksClient.AdventureWorksServiceReference.Product ProductField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductColorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProductIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int[] ProductImageIdsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProductListPriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ProductStandardCostField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private decimal UnitPriceField;
@@ -347,6 +368,97 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductColor {
+            get {
+                return this.ProductColorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductColorField, value) != true)) {
+                    this.ProductColorField = value;
+                    this.RaisePropertyChanged("ProductColor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProductID {
+            get {
+                return this.ProductIDField;
+            }
+            set {
+                if ((this.ProductIDField.Equals(value) != true)) {
+                    this.ProductIDField = value;
+                    this.RaisePropertyChanged("ProductID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int[] ProductImageIds {
+            get {
+                return this.ProductImageIdsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductImageIdsField, value) != true)) {
+                    this.ProductImageIdsField = value;
+                    this.RaisePropertyChanged("ProductImageIds");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal ProductListPrice {
+            get {
+                return this.ProductListPriceField;
+            }
+            set {
+                if ((this.ProductListPriceField.Equals(value) != true)) {
+                    this.ProductListPriceField = value;
+                    this.RaisePropertyChanged("ProductListPrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductName {
+            get {
+                return this.ProductNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductNameField, value) != true)) {
+                    this.ProductNameField = value;
+                    this.RaisePropertyChanged("ProductName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductNumber {
+            get {
+                return this.ProductNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductNumberField, value) != true)) {
+                    this.ProductNumberField = value;
+                    this.RaisePropertyChanged("ProductNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal ProductStandardCost {
+            get {
+                return this.ProductStandardCostField;
+            }
+            set {
+                if ((this.ProductStandardCostField.Equals(value) != true)) {
+                    this.ProductStandardCostField = value;
+                    this.RaisePropertyChanged("ProductStandardCost");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public decimal UnitPrice {
             get {
                 return this.UnitPriceField;
@@ -384,7 +496,7 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Product", Namespace="http://schemas.datacontract.org/2004/07/AdventureWorksService.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Product", Namespace="http://schemas.datacontract.org/2004/07/awsvclib.Contracts")]
     [System.SerializableAttribute()]
     public partial class Product : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -404,7 +516,7 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
         private int ProductIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<int> ProductImageIdsField;
+        private int[] ProductImageIdsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductNumberField;
@@ -475,7 +587,7 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<int> ProductImageIds {
+        public int[] ProductImageIds {
             get {
                 return this.ProductImageIdsField;
             }
@@ -525,7 +637,7 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Person", Namespace="http://schemas.datacontract.org/2004/07/AdventureWorksService.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Person", Namespace="http://schemas.datacontract.org/2004/07/awsvclib.Contracts")]
     [System.SerializableAttribute()]
     public partial class Person : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -602,7 +714,7 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Address", Namespace="http://schemas.datacontract.org/2004/07/AdventureWorksService.Contracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Address", Namespace="http://schemas.datacontract.org/2004/07/awsvclib.Contracts")]
     [System.SerializableAttribute()]
     public partial class Address : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -620,9 +732,6 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PostalCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private AdventureWorksClient.AdventureWorksServiceReference.AddressType TypeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -686,80 +795,6 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public AdventureWorksClient.AdventureWorksServiceReference.AddressType Type {
-            get {
-                return this.TypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
-                    this.TypeField = value;
-                    this.RaisePropertyChanged("Type");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AddressType", Namespace="http://schemas.datacontract.org/2004/07/AdventureWorksService.Contracts")]
-    [System.SerializableAttribute()]
-    public partial class AddressType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AdrressTypeIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int AdrressTypeID {
-            get {
-                return this.AdrressTypeIDField;
-            }
-            set {
-                if ((this.AdrressTypeIDField.Equals(value) != true)) {
-                    this.AdrressTypeIDField = value;
-                    this.RaisePropertyChanged("AdrressTypeID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -775,10 +810,10 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
     public interface AdventuresWorks {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://adventure.works/AdventuresWorks/GetSalesOrders", ReplyAction="http://adventure.works/AdventuresWorks/GetSalesOrdersResponse")]
-        System.Collections.Generic.List<AdventureWorksClient.AdventureWorksServiceReference.SalesOrder> GetSalesOrders(int from, int count);
+        AdventureWorksClient.AdventureWorksServiceReference.SalesOrder[] GetSalesOrders(int from, int count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://adventure.works/AdventuresWorks/GetSalesOrders", ReplyAction="http://adventure.works/AdventuresWorks/GetSalesOrdersResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<AdventureWorksClient.AdventureWorksServiceReference.SalesOrder>> GetSalesOrdersAsync(int from, int count);
+        System.Threading.Tasks.Task<AdventureWorksClient.AdventureWorksServiceReference.SalesOrder[]> GetSalesOrdersAsync(int from, int count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://adventure.works/AdventuresWorks/GetSalesOrdersCount", ReplyAction="http://adventure.works/AdventuresWorks/GetSalesOrdersCountResponse")]
         int GetSalesOrdersCount();
@@ -787,16 +822,16 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
         System.Threading.Tasks.Task<int> GetSalesOrdersCountAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://adventure.works/AdventuresWorks/GetSalesOrderDetails", ReplyAction="http://adventure.works/AdventuresWorks/GetSalesOrderDetailsResponse")]
-        System.Collections.Generic.List<AdventureWorksClient.AdventureWorksServiceReference.SalesOrderDetails> GetSalesOrderDetails(int salesOrderID);
+        AdventureWorksClient.AdventureWorksServiceReference.SalesOrderDetails[] GetSalesOrderDetails(int salesOrderID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://adventure.works/AdventuresWorks/GetSalesOrderDetails", ReplyAction="http://adventure.works/AdventuresWorks/GetSalesOrderDetailsResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<AdventureWorksClient.AdventureWorksServiceReference.SalesOrderDetails>> GetSalesOrderDetailsAsync(int salesOrderID);
+        System.Threading.Tasks.Task<AdventureWorksClient.AdventureWorksServiceReference.SalesOrderDetails[]> GetSalesOrderDetailsAsync(int salesOrderID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://adventure.works/AdventuresWorks/GetPeople", ReplyAction="http://adventure.works/AdventuresWorks/GetPeopleResponse")]
-        System.Collections.Generic.List<AdventureWorksClient.AdventureWorksServiceReference.Person> GetPeople(int from, int count);
+        AdventureWorksClient.AdventureWorksServiceReference.Person[] GetPeople(int from, int count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://adventure.works/AdventuresWorks/GetPeople", ReplyAction="http://adventure.works/AdventuresWorks/GetPeopleResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<AdventureWorksClient.AdventureWorksServiceReference.Person>> GetPeopleAsync(int from, int count);
+        System.Threading.Tasks.Task<AdventureWorksClient.AdventureWorksServiceReference.Person[]> GetPeopleAsync(int from, int count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://adventure.works/AdventuresWorks/GetPeopleCount", ReplyAction="http://adventure.works/AdventuresWorks/GetPeopleCountResponse")]
         int GetPeopleCount();
@@ -805,10 +840,10 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
         System.Threading.Tasks.Task<int> GetPeopleCountAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://adventure.works/AdventuresWorks/GetAddresses", ReplyAction="http://adventure.works/AdventuresWorks/GetAddressesResponse")]
-        System.Collections.Generic.List<AdventureWorksClient.AdventureWorksServiceReference.Address> GetAddresses(int from, int count);
+        AdventureWorksClient.AdventureWorksServiceReference.Address[] GetAddresses(int from, int count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://adventure.works/AdventuresWorks/GetAddresses", ReplyAction="http://adventure.works/AdventuresWorks/GetAddressesResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<AdventureWorksClient.AdventureWorksServiceReference.Address>> GetAddressesAsync(int from, int count);
+        System.Threading.Tasks.Task<AdventureWorksClient.AdventureWorksServiceReference.Address[]> GetAddressesAsync(int from, int count);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://adventure.works/AdventuresWorks/GetAddressesCount", ReplyAction="http://adventure.works/AdventuresWorks/GetAddressesCountResponse")]
         int GetAddressesCount();
@@ -833,11 +868,15 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://adventure.works", Order=0)]
         public int ImageID;
         
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://adventure.works", Order=1)]
+        public bool LargeImage;
+        
         public ProductImageRequest() {
         }
         
-        public ProductImageRequest(int ImageID) {
+        public ProductImageRequest(int ImageID, bool LargeImage) {
             this.ImageID = ImageID;
+            this.LargeImage = LargeImage;
         }
     }
     
@@ -889,11 +928,11 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public System.Collections.Generic.List<AdventureWorksClient.AdventureWorksServiceReference.SalesOrder> GetSalesOrders(int from, int count) {
+        public AdventureWorksClient.AdventureWorksServiceReference.SalesOrder[] GetSalesOrders(int from, int count) {
             return base.Channel.GetSalesOrders(from, count);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<AdventureWorksClient.AdventureWorksServiceReference.SalesOrder>> GetSalesOrdersAsync(int from, int count) {
+        public System.Threading.Tasks.Task<AdventureWorksClient.AdventureWorksServiceReference.SalesOrder[]> GetSalesOrdersAsync(int from, int count) {
             return base.Channel.GetSalesOrdersAsync(from, count);
         }
         
@@ -905,19 +944,19 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
             return base.Channel.GetSalesOrdersCountAsync();
         }
         
-        public System.Collections.Generic.List<AdventureWorksClient.AdventureWorksServiceReference.SalesOrderDetails> GetSalesOrderDetails(int salesOrderID) {
+        public AdventureWorksClient.AdventureWorksServiceReference.SalesOrderDetails[] GetSalesOrderDetails(int salesOrderID) {
             return base.Channel.GetSalesOrderDetails(salesOrderID);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<AdventureWorksClient.AdventureWorksServiceReference.SalesOrderDetails>> GetSalesOrderDetailsAsync(int salesOrderID) {
+        public System.Threading.Tasks.Task<AdventureWorksClient.AdventureWorksServiceReference.SalesOrderDetails[]> GetSalesOrderDetailsAsync(int salesOrderID) {
             return base.Channel.GetSalesOrderDetailsAsync(salesOrderID);
         }
         
-        public System.Collections.Generic.List<AdventureWorksClient.AdventureWorksServiceReference.Person> GetPeople(int from, int count) {
+        public AdventureWorksClient.AdventureWorksServiceReference.Person[] GetPeople(int from, int count) {
             return base.Channel.GetPeople(from, count);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<AdventureWorksClient.AdventureWorksServiceReference.Person>> GetPeopleAsync(int from, int count) {
+        public System.Threading.Tasks.Task<AdventureWorksClient.AdventureWorksServiceReference.Person[]> GetPeopleAsync(int from, int count) {
             return base.Channel.GetPeopleAsync(from, count);
         }
         
@@ -929,11 +968,11 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
             return base.Channel.GetPeopleCountAsync();
         }
         
-        public System.Collections.Generic.List<AdventureWorksClient.AdventureWorksServiceReference.Address> GetAddresses(int from, int count) {
+        public AdventureWorksClient.AdventureWorksServiceReference.Address[] GetAddresses(int from, int count) {
             return base.Channel.GetAddresses(from, count);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<AdventureWorksClient.AdventureWorksServiceReference.Address>> GetAddressesAsync(int from, int count) {
+        public System.Threading.Tasks.Task<AdventureWorksClient.AdventureWorksServiceReference.Address[]> GetAddressesAsync(int from, int count) {
             return base.Channel.GetAddressesAsync(from, count);
         }
         
@@ -950,9 +989,10 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
             return base.Channel.GetProductImage(request);
         }
         
-        public string GetProductImage(int ImageID, out System.IO.Stream ImageData) {
+        public string GetProductImage(int ImageID, bool LargeImage, out System.IO.Stream ImageData) {
             AdventureWorksClient.AdventureWorksServiceReference.ProductImageRequest inValue = new AdventureWorksClient.AdventureWorksServiceReference.ProductImageRequest();
             inValue.ImageID = ImageID;
+            inValue.LargeImage = LargeImage;
             AdventureWorksClient.AdventureWorksServiceReference.ProductImageMessage retVal = ((AdventureWorksClient.AdventureWorksServiceReference.AdventuresWorks)(this)).GetProductImage(inValue);
             ImageData = retVal.ImageData;
             return retVal.FileName;
@@ -963,9 +1003,10 @@ namespace AdventureWorksClient.AdventureWorksServiceReference {
             return base.Channel.GetProductImageAsync(request);
         }
         
-        public System.Threading.Tasks.Task<AdventureWorksClient.AdventureWorksServiceReference.ProductImageMessage> GetProductImageAsync(int ImageID) {
+        public System.Threading.Tasks.Task<AdventureWorksClient.AdventureWorksServiceReference.ProductImageMessage> GetProductImageAsync(int ImageID, bool LargeImage) {
             AdventureWorksClient.AdventureWorksServiceReference.ProductImageRequest inValue = new AdventureWorksClient.AdventureWorksServiceReference.ProductImageRequest();
             inValue.ImageID = ImageID;
+            inValue.LargeImage = LargeImage;
             return ((AdventureWorksClient.AdventureWorksServiceReference.AdventuresWorks)(this)).GetProductImageAsync(inValue);
         }
     }

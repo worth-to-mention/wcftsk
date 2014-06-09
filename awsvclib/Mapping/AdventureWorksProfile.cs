@@ -22,13 +22,33 @@ namespace awsvclib.Mapping
                 );
             Mapper.CreateMap<EM.Person, Contracts.Person>();
             Mapper.CreateMap<EM.Address, Contracts.Address>();
-            Mapper.CreateMap<EM.Product, Contracts.Product>()
+            Mapper.CreateMap<EM.Product, Contracts.SalesOrderDetails>()
                 .ForMember(
                     dest => dest.ProductImageIds,
                     opt => opt.MapFrom(
                         src => src.ProductProductPhotoes
                             .Select(x => x.ProductPhotoID)
                             .ToArray()
+                    )
+                ).ForMember(
+                    dest => dest.ProductName,
+                    opt => opt.MapFrom(
+                        src => src.Name
+                    )
+                ).ForMember(
+                    dest => dest.ProductColor,
+                    opt => opt.MapFrom(
+                        src => src.Color
+                    )
+                ).ForMember(
+                    dest => dest.ProductListPrice,
+                    opt => opt.MapFrom(
+                        src => src.ListPrice
+                    )
+                ).ForMember(
+                    dest => dest.ProductStandardCost,
+                    opt => opt.MapFrom(
+                        src => src.StandardCost
                     )
                 );
             Mapper.CreateMap<EM.SalesOrderDetail, Contracts.SalesOrderDetails>()

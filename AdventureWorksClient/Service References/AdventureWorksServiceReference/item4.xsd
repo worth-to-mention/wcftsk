@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://adventure.works" elementFormDefault="qualified" targetNamespace="http://adventure.works" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:8001/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AdventureWorksService.Contracts" />
+  <xs:import schemaLocation="http://localhost:8001/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/awsvclib.Contracts" />
   <xs:import schemaLocation="http://localhost:8001/?xsd=xsd4" namespace="http://schemas.microsoft.com/Message" />
   <xs:element name="GetSalesOrders">
     <xs:complexType>
@@ -13,7 +13,7 @@
   <xs:element name="GetSalesOrdersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AdventureWorksService.Contracts" minOccurs="0" name="GetSalesOrdersResult" nillable="true" type="q1:ArrayOfSalesOrder" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/awsvclib.Contracts" minOccurs="0" name="GetSalesOrdersResult" nillable="true" type="q1:ArrayOfSalesOrder" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -39,7 +39,7 @@
   <xs:element name="GetSalesOrderDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AdventureWorksService.Contracts" minOccurs="0" name="GetSalesOrderDetailsResult" nillable="true" type="q2:ArrayOfSalesOrderDetails" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/awsvclib.Contracts" minOccurs="0" name="GetSalesOrderDetailsResult" nillable="true" type="q2:ArrayOfSalesOrderDetails" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -54,7 +54,7 @@
   <xs:element name="GetPeopleResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AdventureWorksService.Contracts" minOccurs="0" name="GetPeopleResult" nillable="true" type="q3:ArrayOfPerson" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/awsvclib.Contracts" minOccurs="0" name="GetPeopleResult" nillable="true" type="q3:ArrayOfPerson" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -81,7 +81,7 @@
   <xs:element name="GetAddressesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AdventureWorksService.Contracts" minOccurs="0" name="GetAddressesResult" nillable="true" type="q4:ArrayOfAddress" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/awsvclib.Contracts" minOccurs="0" name="GetAddressesResult" nillable="true" type="q4:ArrayOfAddress" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -101,6 +101,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="ImageID" type="xs:int" />
+        <xs:element minOccurs="0" name="LargeImage" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

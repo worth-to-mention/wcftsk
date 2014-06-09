@@ -17,9 +17,14 @@
 
                             <ListBox Width="100"
                                 Style="{StaticResource ImageListBox}"
-                                DataContext="{Binding Product}"
-                                ItemsSource="{Binding RelativeSource={RelativeSource Self}, Path=ProductImages}"
-                            />
+                                ItemsSource="{Binding ProductImages}"
+                            >
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding ImageSource}" />
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
 
                             <GridSplitter Grid.Column="1" Style="{StaticResource VerticalSplitterStyle}"/>
 
@@ -85,7 +90,7 @@
                                 />
                                 <Label  Grid.Row="4"
                                     Grid.Column="2"
-                                    Content="{Binding Name}"
+                                    Content="{Binding ProductName}"
                                 />
                                 
                                 <Label  Grid.Row="5"
@@ -99,20 +104,20 @@
                                 
                                 <Label  Grid.Row="6"
                                     Grid.Column="0"
-                                    Content="List price"
+                                    Content="Product List price"
                                 />
                                 <Label  Grid.Row="6"
                                     Grid.Column="2"
-                                    Content="{Binding ListPrice}"
+                                    Content="{Binding ProductListPrice}"
                                 />
                                 
                                 <Label  Grid.Row="7"
                                     Grid.Column="0"
-                                    Content="Standard cost"
+                                    Content="Product Standard cost"
                                 />
                                 <Label  Grid.Row="7"
                                     Grid.Column="2"
-                                    Content="{Binding StandardCost}"
+                                    Content="{Binding ProductStandardCost}"
                                 />
 
                             </Grid>

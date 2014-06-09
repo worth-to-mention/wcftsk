@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9968bdd4-49ce-43a6-ab29-4179444347d0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="eb3276f5-fc18-4d59-a4db-f2b1772f016c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -9,9 +9,7 @@
     <GenerateInternalTypes>false</GenerateInternalTypes>
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
-    <CollectionMappings>
-      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
-    </CollectionMappings>
+    <CollectionMappings />
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
@@ -21,17 +19,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8001" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:8001/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="6dbaae93-ba7c-44f8-afb3-e700594a0cd9" SourceId="1" SourceUrl="http://localhost:8001/?xsd=xsd4" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="d6dbfcb9-20f1-41d3-8eda-7c31ad2a932a" SourceId="1" SourceUrl="http://localhost:8001/?xsd=xsd3" />
-    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="acfdfbb8-150b-4f90-8f9f-13b5e74ba4bb" SourceId="1" SourceUrl="http://localhost:8001/?xsd=xsd2" />
-    <MetadataFile FileName="item1.wsdl" MetadataType="Wsdl" ID="0cbc529c-70b3-4dfd-b58c-9fb0e10eb3e1" SourceId="1" SourceUrl="http://localhost:8001/?wsdl=wsdl0" />
-    <MetadataFile FileName="AdventureWorks1.wsdl" MetadataType="Wsdl" ID="49886a1e-3dfd-444b-9bf1-5df449fab034" SourceId="1" SourceUrl="http://localhost:8001/?wsdl" />
-    <MetadataFile FileName="item31.xsd" MetadataType="Schema" ID="51f08f08-90cc-4306-bb88-7e2fc337be32" SourceId="1" SourceUrl="http://localhost:8001/?xsd=xsd1" />
-    <MetadataFile FileName="item1.disco" MetadataType="Disco" ID="4f21ec97-88fb-4149-8c8f-e041fb32be09" SourceId="1" SourceUrl="http://localhost:8001/?disco" />
-    <MetadataFile FileName="item32.xsd" MetadataType="Schema" ID="f56e6772-812e-4920-8d4a-5dba72562093" SourceId="1" SourceUrl="http://localhost:8001/?xsd=xsd0" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="dcecd895-d717-483a-b216-034e6c782c4e" SourceId="1" SourceUrl="http://localhost:8001/?xsd=xsd4" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="4571686a-7a5c-4e52-8647-1bab648d61e3" SourceId="1" SourceUrl="http://localhost:8001/?xsd=xsd3" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="1371c02f-d32b-4302-8361-d2435118ba30" SourceId="1" SourceUrl="http://localhost:8001/?xsd=xsd2" />
+    <MetadataFile FileName="item.wsdl" MetadataType="Wsdl" ID="b57cd594-e53d-41e6-b749-cc8ab736fb83" SourceId="1" SourceUrl="http://localhost:8001/?wsdl=wsdl0" />
+    <MetadataFile FileName="AdventureWorks.wsdl" MetadataType="Wsdl" ID="11bfcda0-1825-477c-9730-e19d6f874ff8" SourceId="1" SourceUrl="http://localhost:8001/?wsdl" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="787fa634-d005-44a7-92d1-f7f3a9a4b0fc" SourceId="1" SourceUrl="http://localhost:8001/?xsd=xsd1" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="7b402c9a-3673-4082-a66f-c4c2ba3f5fcc" SourceId="1" SourceUrl="http://localhost:8001/?disco" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="982048a5-42a2-4115-822f-28f7eb343264" SourceId="1" SourceUrl="http://localhost:8001/?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
