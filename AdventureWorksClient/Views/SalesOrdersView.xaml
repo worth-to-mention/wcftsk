@@ -28,10 +28,11 @@
             Orientation="Horizontal"
         >
             <Label>Page size:</Label>
-            <ComboBox SelectedValue="{Binding PageSize, Mode=OneWayToSource}" ItemsSource="{Binding PageSizes}" />
+            <ComboBox SelectedValue="{Binding PageSize, Mode=OneTime}" ItemsSource="{Binding PageSizes}" />
             <StackPanel Orientation="Horizontal"
                         TextElement.FontFamily="Marlett">
                 <Button Command="{Binding PrevPage}">3</Button>
+                <TextBox Text="{Binding CurrentPage}" HorizontalAlignment="Stretch"/>
                 <Button Command="{Binding NextPage}">4</Button>
             </StackPanel>
         </StackPanel>
@@ -61,8 +62,17 @@
             </ListView.View>
         </ListView>
 
-        <StatusBar Grid.Row="3" Grid.ColumnSpan="2">
-            <Label Content="{Binding PagingInfo}" />
-        </StatusBar>
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="2">
+            <DockPanel LastChildFill="False">
+                <StackPanel Orientation="Horizontal"  DockPanel.Dock="Left">
+                    <Label Content="{Binding PagingInfo}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"  DockPanel.Dock="Right" x:Name="LoaderBlock">
+                    <Image Source="{StaticResource LoaderGif}" />
+                    <Label Content="Loading..." />
+                    <Button FontFamily="Marlett" Content="r" Command="{Binding CancelCurrentTask}"/>
+                </StackPanel>
+            </DockPanel>
+        </StackPanel>
     </Grid>
 </Window>

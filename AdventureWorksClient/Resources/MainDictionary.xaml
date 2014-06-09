@@ -25,4 +25,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <BitmapImage x:Key="LoaderGif" UriSource="ajax-loader.gif" />
 </ResourceDictionary>

@@ -24,10 +24,13 @@ namespace AdventureWorksClient.ViewModels
         private Int32 pageSize              = 30;
         private Int32 ordersCount           = 0;
         private SalesOrder selectedOrder    = null;
+        private Boolean pageLoading         = false;
+       
 
 
         private ICommand nextPage;
         private ICommand prevPage;
+        private ICommand cancelCurrentTask;
 
         private SalesOrdersView view;
         private AdventureWorksServiceReference.AdventuresWorksClient client;
@@ -35,14 +38,12 @@ namespace AdventureWorksClient.ViewModels
         public SalesOrdersViewModel(SalesOrdersView view)
         {
             this.view = view;
-            new Thread(() =>
+            client = new AdventureWorksServiceReference.AdventuresWorksClient();
+            Task.Factory.StartNew(() =>
             {
-                client = new AdventureWorksServiceReference.AdventuresWorksClient();
                 OrdersCount = client.GetSalesOrdersCount();
-                SalesOrders = new ObservableCollection<SalesOrder>(
-                    client.GetSalesOrders(currentPage * pageSize, pageSize)
-                );
-            }).Start();
+            });
+            LoadPage(CurrentPage);
         }
 
         #region View data source
@@ -149,11 +150,8 @@ namespace AdventureWorksClient.ViewModels
                 {
                     nextPage = new Command(x =>
                     {
-                        SalesOrders = new ObservableCollection<SalesOrder>(
-                            client.GetSalesOrders(++CurrentPage * PageSize, PageSize)
-                        );
-                        OnPropertyChanged("PagingInfo");
-                    }, x => (CurrentPage + 1) * PageSize < OrdersCount);
+                        LoadPage(++CurrentPage);
+                    }, x => !pageLoading && (CurrentPage + 1) * PageSize < OrdersCount);
                 }
                 return nextPage;
             }
@@ -167,17 +165,28 @@ namespace AdventureWorksClient.ViewModels
                 {
                     prevPage = new Command(x =>
                     {
-                        SalesOrders = new ObservableCollection<SalesOrder>(
-                            client.GetSalesOrders(--CurrentPage * PageSize, PageSize)
-                        );
-                        OnPropertyChanged("PagingInfo");
+                        LoadPage(--CurrentPage);
                     }, 
-                        x => (CurrentPage - 1) >= 0
+                        x => !pageLoading && (CurrentPage - 1) >= 0
                     );
                 }
                 return prevPage;
             }
         }
+
         #endregion
+
+        private async void LoadPage(Int32 pageNumber)
+        {
+            pageNumber = pageNumber < 0
+                ? 0
+                : pageNumber;
+            pageLoading = true;
+            SalesOrders = new ObservableCollection<SalesOrder>(
+                await client.GetSalesOrdersAsync(pageNumber * PageSize, PageSize)
+            );
+            OnPropertyChanged("PagingInfo");
+            pageLoading = false;
+        }
     }
 }
