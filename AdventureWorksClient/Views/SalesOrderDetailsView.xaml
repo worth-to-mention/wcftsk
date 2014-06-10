@@ -7,8 +7,7 @@
         <ListView ItemsSource="{Binding OrderDetails}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border>
-                        <Grid>
+                        <Grid Margin="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
@@ -123,8 +122,6 @@
                             </Grid>
                             
                         </Grid>
-
-                    </Border>
 
                 </DataTemplate>
             </ListView.ItemTemplate>
