@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using AdventureWorksClient.AdventureWorksServiceReference;
 using AdventureWorksClient.Views;
@@ -57,27 +58,56 @@ namespace AdventureWorksClient.ViewModels
 
         private void LoadImages()
         {
+            var loader = (BitmapImage)App.Current.FindResource("LoaderGif");
             foreach(var detail in OrderDetails)
             {
-                detail.ProductImages.ForEach( x =>
+                foreach (var x in detail.ProductImages)
                 {
-                    Stream stream;
-                    x.FileName = client.GetProductImage(x.ImageID, false, out stream);
-                    var memory = new MemoryStream();
-                    var bytesRead = 0;
-                    var buffer = new Byte[1024];
-                    do
+                    new Action(async () =>
                     {
-                        bytesRead = stream.Read(buffer, 0, buffer.Length);
-                        memory.Write(buffer, 0, bytesRead);
-                    } while (bytesRead > 0);
-                    var bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.StreamSource = memory;
-                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
-                    bitmap.EndInit();
-                    x.ImageSource = bitmap;
-                });
+                        x.ImageSource = loader;
+                        ProductImageMessage msg = await client.GetProductImageAsync(x.ImageID, LargeImage: false);
+                        var memory = new MemoryStream();
+                        var bytesRead = 0;
+                        var buffer = new Byte[1024];
+                        do
+                        {
+                            bytesRead = msg.ImageData.Read(buffer, 0, buffer.Length);
+                            memory.Write(buffer, 0, bytesRead);
+                        } 
+                        while (bytesRead > 0);
+                        var bitmap = new BitmapImage();
+                        bitmap.BeginInit();
+                        bitmap.StreamSource = memory;
+                        bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmap.EndInit();
+                        x.ImageSource = bitmap;
+                    })();
+                }
+                //detail.ProductImages.ForEach(async x =>
+                //{
+                //    x.ImageSource = loader;
+                //    ProductImageMessage msg = await client.GetProductImageAsync(x.ImageID, LargeImage: false);
+                //    var memory = new MemoryStream();
+                //    var bytesRead = 0;
+                //    var buffer = new Byte[1024];
+                //    do
+                //    {
+                //        bytesRead = msg.ImageData.Read(buffer, 0, buffer.Length);
+                //        memory.Write(buffer, 0, bytesRead);
+                //    } 
+                //    while (bytesRead > 0);
+                //    var bitmap = new BitmapImage();
+                //    bitmap.BeginInit();
+                //    bitmap.StreamSource = memory;
+                //    bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                //    bitmap.EndInit();
+                //    x.ImageSource = bitmap;
+
+                //    var moq = new Models.ProductImage();
+                    
+
+                //});
             }
         }
     }

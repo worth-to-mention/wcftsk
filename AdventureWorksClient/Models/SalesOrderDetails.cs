@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,6 @@ namespace AdventureWorksClient.Models
         
         public Decimal ProductListPrice { get; set; }
 
-        public List<ProductImage> ProductImages { get; set; }
+        public ObservableCollection<ProductImage> ProductImages { get; set; }
     }
 }
