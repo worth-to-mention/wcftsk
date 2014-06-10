@@ -140,6 +140,10 @@ namespace awsvclib
                         stream.Write(img.ThumbNailPhoto, 0, img.ThumbNailPhoto.Length);
                         fileName = img.ThumbnailPhotoFileName;
                     }
+
+                    // phfffffuuu
+                    stream.Position = 0;
+                    
                     msg.ImageData = stream;
                     msg.FileName = fileName;
                 }

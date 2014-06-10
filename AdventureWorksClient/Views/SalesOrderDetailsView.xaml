@@ -4,7 +4,7 @@
         Title="SalesOrderDetailsView" Height="300" Width="300">
     
     <Grid>
-        <ListView ItemsSource="{Binding OrderDetails}">
+        <ListView ItemsSource="{Binding OrderDetails}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border>
@@ -21,7 +21,7 @@
                             >
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <Image Source="{Binding ImageSource}" />
+                                        <Image Source="{Binding ImageSource}" Stretch="UniformToFill"/>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,23 +51,32 @@ namespace AdventureWorksClient.ViewModels
             }
         }
 
+
+
         #endregion
 
         private void LoadImages()
         {
             foreach(var detail in OrderDetails)
             {
-                detail.ProductImages.ForEach(async x =>
+                detail.ProductImages.ForEach( x =>
                 {
-                    ProductImageMessage msg = await client.GetProductImageAsync(x.ImageID, LargeImage: false);
+                    Stream stream;
+                    x.FileName = client.GetProductImage(x.ImageID, false, out stream);
+                    var memory = new MemoryStream();
+                    var bytesRead = 0;
+                    var buffer = new Byte[1024];
+                    do
+                    {
+                        bytesRead = stream.Read(buffer, 0, buffer.Length);
+                        memory.Write(buffer, 0, bytesRead);
+                    } while (bytesRead > 0);
                     var bitmap = new BitmapImage();
                     bitmap.BeginInit();
-                    bitmap.StreamSource = msg.ImageData;
+                    bitmap.StreamSource = memory;
                     bitmap.CacheOption = BitmapCacheOption.OnLoad;
                     bitmap.EndInit();
-                    
                     x.ImageSource = bitmap;
-                    x.FileName = msg.FileName;
                 });
             }
         }
