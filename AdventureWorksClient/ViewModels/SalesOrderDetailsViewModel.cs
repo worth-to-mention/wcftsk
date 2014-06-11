@@ -61,6 +61,11 @@ namespace AdventureWorksClient.ViewModels
             var loader = (BitmapImage)App.Current.FindResource("LoaderGif");
             foreach(var detail in OrderDetails)
             {
+                for (Int32 i = 0; i < detail.ProductImages.Count; ++i)
+                {
+                    Models.ProductImage productImage = detail.ProductImages[i];
+
+                }
                 foreach (var x in detail.ProductImages)
                 {
                     new Action(async () =>

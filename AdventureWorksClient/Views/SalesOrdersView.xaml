@@ -73,7 +73,6 @@
                 <StackPanel Orientation="Horizontal"  DockPanel.Dock="Right" x:Name="LoaderBlock" Visibility="{Binding PageLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <Image Source="{StaticResource LoaderGif}" />
                     <Label Content="Loading..." />
-                    <Button FontFamily="Marlett" Content="r" Command="{Binding CancelCurrentTask}"/>
                 </StackPanel>
             </DockPanel>
         </StackPanel>

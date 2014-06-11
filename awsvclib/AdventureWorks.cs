@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using awsvclib.EntityModel;
+using awsvclib.Extensions;
 using AutoMapper;
 using System.IO;
 
@@ -21,7 +22,8 @@ namespace awsvclib
 
         #region IAdventuresWorks Members
 
-        public List<Contracts.SalesOrder> GetSalesOrders(int from, int count)
+#region SalesOrders
+        public List<Contracts.SalesOrder> GetSalesOrders(Int32 from, Int32 count)
         {
             List<Contracts.SalesOrder> orders = null;
             using(var context = new AdventureWorksContext())
@@ -32,6 +34,7 @@ namespace awsvclib
             }
             return orders;
         }
+        
         public Int32 GetSalesOrdersCount()
         {
             Int32 count = 0;
@@ -41,7 +44,22 @@ namespace awsvclib
             }
             return count;
         }
+
+        public Int32 AddSalesOrder(Contracts.SalesOrder salesOrder)
+        {
+ 	        throw new NotImplementedException();
+        }
+        public void SetSalesOrderStatus(Int32 salesOrderID, Contracts.SalesOrderStatus status)
+        {
+ 	        throw new NotImplementedException();
+        }
+        public int AddSalesOrderDetails(Contracts.SalesOrderDetails salesOrderDetails)
+        {
+            throw new NotImplementedException();
+        }
+#endregion
         
+#region SalesOrderDetails
         public List<Contracts.SalesOrderDetails> GetSalesOrderDetails(Int32 salesOrderID)
         {
             var details = new List<Contracts.SalesOrderDetails>();
@@ -60,18 +78,23 @@ namespace awsvclib
             }
             return details;
         }
+        
+        public int GetSalesOrderDetailsCount(Int32 salesOrderID)
+        {
+ 	        throw new NotImplementedException();
+        }
+#endregion
 
+#region People
         public Person GetPerson(Int32 PersonID)
         {
             return new Person();
         }
 
-
-
-        public List<Contracts.Person> GetPeople(int from, int count)
+        public List<Contracts.Person> GetPeople(Int32 from, Int32 count)
         {
             List<Contracts.Person> people;
-            using(var context = new AdventureWorksContext())
+            using (var context = new AdventureWorksContext())
             {
                 people = context.People.OrderBy(x => x.BusinessEntityID).Skip(from).Take(count).ToList()
                     .Select(x => Mapper.Map<Person, Contracts.Person>(x))
@@ -79,16 +102,25 @@ namespace awsvclib
             }
             return people;
         }
+
         public Int32 GetPeopleCount()
         {
             var count = 0;
-            using(var context = new AdventureWorksContext())
+            using (var context = new AdventureWorksContext())
             {
                 count = context.People.Count();
             }
             return count;
         }
 
+        public int AddPerson(Contracts.Person person)
+        {
+            throw new NotImplementedException();
+        }
+#endregion
+
+
+#region Addresses
         public List<Contracts.Address> GetAddresses(int from, int count)
         {
             var adresses = new List<Contracts.Address>();
@@ -102,6 +134,7 @@ namespace awsvclib
 
             return adresses;
         }
+        
         public Int32 GetAddressesCount()
         {
             Int32 count = 0;
@@ -113,8 +146,87 @@ namespace awsvclib
 
             return count;
         }
+        
+        public void AddAddress(Contracts.Address address)
+        {
+            throw new NotImplementedException();
+        }
+#endregion
 
-        public void UpdateSalesOrder(Contracts.SalesOrder salesOrder)
+#region Customers
+        public List<Contracts.Customer> GetCustomers(int from, int count)
+        {
+            var customers = new List<Contracts.Customer>();
+            using (var context = new AdventureWorksContext())
+            {
+                context.Customers.Include("Person");
+                customers = context.Customers.OrderBy(x => x.ModifiedDate)
+                    .Skip(from).Take(count).ToList()
+                    .Select(x =>
+                        Mapper.Map<Customer, Contracts.Customer>(x)
+                    ).ToList();
+            }
+            return customers;
+        }
+        
+        public int GetCustomersCount()
+        {
+            Int32 customersCount = 0;
+            using (var context = new AdventureWorksContext())
+            {
+                customersCount = context.Customers.Count();
+            }
+            return customersCount;
+        }
+        
+        public Int32 AddCustomer(Contracts.Customer customer)
+        {
+            Customer newCustomer = Mapper.Map<Contracts.Customer, Customer>(customer);
+            Person customerPerson = Mapper.Map<Contracts.Customer, Person>(customer);
+            var personType = Contracts.PersonType.IndividualCustomer;
+            using (var contex = new AdventureWorksContext())
+            {
+                customerPerson.PersonType = personType.ToDBValue();
+               // newCustomer.Person = customerPerson;
+                newCustomer.AccountNumber = "AW";
+                contex.Entry(newCustomer).State = System.Data.Entity.EntityState.Added;
+                
+                contex.Customers.Add(newCustomer);
+                contex.SaveChanges();
+            }
+            return newCustomer.CustomerID;
+        }
+#endregion
+
+#region SalesPeople
+        public List<Contracts.SalesPerson> GetSalesPeople(int from, int count)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetSalesPeopleCount()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int AddSalesPerson(Contracts.SalesPerson salesPerson)
+        {
+            throw new NotImplementedException();
+        }
+#endregion
+
+#region Products
+        public List<Contracts.Product> GetProducts(int from, int count)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetProductsCount()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int AddProduct(Contracts.Product product)
         {
             throw new NotImplementedException();
         }
@@ -143,13 +255,37 @@ namespace awsvclib
 
                     // phfffffuuu
                     stream.Position = 0;
-                    
+
                     msg.ImageData = stream;
                     msg.FileName = fileName;
                 }
             }
             return msg;
         }
+#endregion
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         #endregion
     }

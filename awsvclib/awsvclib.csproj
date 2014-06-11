@@ -63,13 +63,16 @@
   <ItemGroup>
     <Compile Include="AdventureWorks.cs" />
     <Compile Include="Contracts\Address.cs" />
+    <Compile Include="Contracts\Customer.cs" />
     <Compile Include="Contracts\Person.cs" />
+    <Compile Include="Contracts\PersonType.cs" />
     <Compile Include="Contracts\Product.cs" />
     <Compile Include="Contracts\ProductImageMessage.cs" />
     <Compile Include="Contracts\ProductImageRequest.cs" />
     <Compile Include="Contracts\SalesOrder.cs" />
     <Compile Include="Contracts\SalesOrderDetails.cs" />
     <Compile Include="Contracts\SalesOrderStatus.cs" />
+    <Compile Include="Contracts\SalesPerson.cs" />
     <Compile Include="EntityModel\Address.cs" />
     <Compile Include="EntityModel\AdventureWorksContext.cs" />
     <Compile Include="EntityModel\CountryRegion.cs" />
@@ -91,7 +94,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <VSToolsPath Condition="'$(VSToolsPath)' == '' and '$(VisualStudioVersion)' != '' and '$(VisualStudioVersion)' != '11.0'">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

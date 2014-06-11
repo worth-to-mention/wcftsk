@@ -8,14 +8,12 @@ using System.Threading.Tasks;
 namespace awsvclib.Contracts
 {
     [DataContract]
-    public class Person
+    public class Customer : Person
     {
         [DataMember]
-        public Int32 BusinessEntityID { get; set; }
-        [DataMember]
-        public String FirstName { get; set; }
-        [DataMember]
-        public String LastName { get; set; }
+        public Int32 CustomerID { get; set; }
 
+        [DataMember]
+        public String AccountNumber { get; set; }
     }
 }
