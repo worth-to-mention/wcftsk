@@ -187,11 +187,12 @@ namespace awsvclib
             using (var contex = new AdventureWorksContext())
             {
                 customerPerson.PersonType = personType.ToDBValue();
-               // newCustomer.Person = customerPerson;
-                newCustomer.AccountNumber = "AW";
-                contex.Entry(newCustomer).State = System.Data.Entity.EntityState.Added;
-                
+                customerPerson.ModifiedDate = DateTime.UtcNow;
+                newCustomer.Person = customerPerson;
+                newCustomer.ModifiedDate = customerPerson.ModifiedDate;
+                contex.People.Add(customerPerson);
                 contex.Customers.Add(newCustomer);
+
                 contex.SaveChanges();
             }
             return newCustomer.CustomerID;

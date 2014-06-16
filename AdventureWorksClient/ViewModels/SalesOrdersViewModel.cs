@@ -30,6 +30,7 @@ namespace AdventureWorksClient.ViewModels
 
         private ICommand nextPage;
         private ICommand prevPage;
+        private ICommand getPage;
         private ICommand cancelCurrentTask;
 
         private SalesOrdersView view;
@@ -83,6 +84,9 @@ namespace AdventureWorksClient.ViewModels
                     currentPage = value;
                     OnPropertyChanged("CurrentPage");
                     OnPropertyChanged("PagingInfo");
+                    
+                    if (GetPage.CanExecute(this))
+                        GetPage.Execute(this);
                 }
             }
         }
@@ -193,6 +197,20 @@ namespace AdventureWorksClient.ViewModels
             }
         }
 
+        public ICommand GetPage
+        {
+            get
+            {
+                if (getPage == null)
+                {
+                    getPage = new Command(
+                        x => LoadPage(CurrentPage),
+                        x => !PageLoading
+                    );
+                }
+                return getPage;
+            }
+        }
         #endregion
 
         private async void LoadPage(Int32 pageNumber)
@@ -201,20 +219,12 @@ namespace AdventureWorksClient.ViewModels
                 ? 0
                 : pageNumber;
             PageLoading = true;
-            //var task = client.GetSalesOrdersAsync(pageNumber * PageSize, PageSize);
-            //var awaiter = task.GetAwaiter();
-            //awaiter.OnCompleted(() =>
-            //{   
-            //    var result = awaiter.GetResult();
-            //    SalesOrders = new ObservableCollection<SalesOrder>(result); 
-            //    OnPropertyChanged("PagingInfo");
-            //    PageLoading = false;
-            //});
             SalesOrders = new ObservableCollection<SalesOrder>(
                 await client.GetSalesOrdersAsync(pageNumber * PageSize, PageSize)
             );
             OnPropertyChanged("PagingInfo");
             PageLoading = false;
+            CommandManager.InvalidateRequerySuggested();
         }
     }
 }
